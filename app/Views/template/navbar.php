@@ -13,7 +13,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/Pages/about">About</a>
                 </li>
-
+                <li class="nav-item">
+                    <a class="nav-link" href="/komik/">Daftar Komik</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/pages/contact">contact</a>
                 </li>

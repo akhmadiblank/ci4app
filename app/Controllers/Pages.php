@@ -23,9 +23,10 @@ class Pages extends BaseController
         $data = [
             'title' => 'About'
         ];
-        echo view('template/header', $data);
-        echo view('Pages/about');
-        echo view('template/footer');
+        // echo view('template/header', $data);
+        // echo view('Pages/about');
+        // echo view('template/footer');
+        return  view('pages/about', $data);
     }
 
     public function contact()

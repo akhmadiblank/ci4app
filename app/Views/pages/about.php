@@ -1,3 +1,5 @@
+<?= $this->extend('template/template'); ?>
+<?= $this->section('content'); ?>
 <div class="container">
     <div class="row">
         <div class="col">
@@ -6,3 +8,4 @@
         </div>
     </div>
 </div>
+<?= $this->endsection(); ?>
