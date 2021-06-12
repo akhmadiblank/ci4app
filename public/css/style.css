@@ -6,3 +6,7 @@
 .table > tbody > tr > * {
   vertical-align: middle;
 }
+img {
+  width: 17.85rem;
+  height: 21rem;
+}
