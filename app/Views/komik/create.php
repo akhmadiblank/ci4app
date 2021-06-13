@@ -6,10 +6,14 @@
             <h2 class="mb-1">Tambah Data Komik</h2>
             <form class="mt-4" action="/komik/save" method="post">
                 <?= csrf_field(); ?>
+                <?= $validation->listErrors() ?>
                 <div class="form-group row">
                     <label for="Judul" class="col-sm-2 col-form-label">Judul</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="Judul" name="judul">
+                        <input type="text" class="form-control <?= ($validation->hasError('judul')) ? 'is-invalid' : '' ?>" id="Judul" name="judul" autofocus value="<?= old('judul'); ?>">
+                        <div id="validationServer03Feedback" class="invalid-feedback">
+                            <?= $validation->getError('judul'); ?>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group row">
