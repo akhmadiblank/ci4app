@@ -93,4 +93,56 @@ class Komik extends BaseController
         session()->setFlashdata('pesan', 'Data Berhasil ditambahkan');
         return redirect()->to('/komik');
     }
+    public function delete($id)
+    {
+        $this->KomikModel->delete($id);
+        session()->setFlashdata('pesan', 'Data Berhasil dihapus');
+        return redirect()->to('/komik');
+    }
+    public function edit($slug)
+    {
+        $data = [
+            'title' => 'tambah data komik',
+            'validation' => \config\Services::validation(),
+            'komik' => $this->KomikModel->getKomik($slug)
+        ];
+
+
+        return  view('komik/edit', $data);
+    }
+    public function update($id)
+    {
+        $komiklama = $this->KomikModel->getKomik($this->request->getVar('slug'));
+        if ($komiklama['judul'] == $this->request->getVar('judul')) {
+            $rule_judul = 'required';
+        } else {
+            $rule_judul = 'required|is_unique[komik.judul]';
+        }
+        if (!$this->validate([
+            'judul' => [
+                'rules' => $rule_judul,
+                'errors' => [
+                    'required' => '{field} komik harus diisi',
+                    'is_unique' => '{field} komik sudah terdaftar'
+                ]
+            ]
+        ])) {
+            $validation = \Config\Services::validation();
+            return redirect()->to('/komik/edit/' . $this->request->getVar('slug'))->withInput()->with('validation', $validation);
+        }
+        $slug = url_title($this->request->getVar('judul'), '-', true);
+        $this->KomikModel->save(
+            [
+                'id'    => $id,
+                'judul' => $this->request->getVar('judul'),
+                'slug' => $slug,
+                'penulis' => $this->request->getVar('penulis'),
+                'penerbit' => $this->request->getVar('penerbit'),
+                'sampul' => $this->request->getVar('sampul')
+
+            ]
+        );
+        session()->setFlashdata('pesan', 'Data Berhasil diubah');
+        return redirect()->to('/komik');
+    }
 }

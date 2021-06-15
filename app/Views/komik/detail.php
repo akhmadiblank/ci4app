@@ -13,8 +13,13 @@
                 <h5 class="card-title"><b>Judul: </b><?= $komik['judul']; ?></h5>
                 <p class="card-text"><b>penulis: </b><?= $komik['penulis'] ?></p>
                 <p class="card-text"><b>penerbit: </b><?= $komik['penerbit'] ?></p>
-                <a href="" class="btn btn-danger">hapus</a>
-                <a href="" class="btn btn-success">edit</a>
+                <a href="/komik/edit/<?= $komik['slug'] ?>" class="btn btn-success">edit</a>
+                <form action="/komik/<?= $komik['id'] ?>" method="post" class="d-inline">
+                    <?= csrf_field(); ?>
+                    <input type="hidden" name="_method" value="delete">
+                    <button type="submit" class="btn btn-danger">delete</button>
+                </form>
+                <!-- ini cara lama dan kurang aman <a href="/komik/delete/id" class="btn btn-danger">hapus</a> -->
                 <br>
                 <a href="/komik">kembali kehalaman utama</a>
 
