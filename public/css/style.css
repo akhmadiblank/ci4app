@@ -10,3 +10,7 @@ img {
   width: 17.85rem;
   height: 21rem;
 }
+img #img-Preview {
+  width: 200%;
+  height: 100%;
+}

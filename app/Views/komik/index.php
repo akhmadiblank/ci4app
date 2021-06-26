@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col">
             <h3 class="mt-4">Daftar Koleksi Komik</h3>
-            <a href="/komik/create" class="btn btn-primary mb-3">Tambah Data Komik</a>
+            <a href="/komik/create" class="btn btn-primary my-3">Tambah Data Komik</a>
             <?php if (session()->getFlashdata('pesan')) : ?>
                 <div class="alert alert-primary" role="alert">
                     <?= session()->getFlashdata('pesan') ?>
